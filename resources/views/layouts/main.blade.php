@@ -73,7 +73,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('users.index')}}">
                     <i class="fas fa-duotone fa-user-alt"></i>
                     <span>Manage User</span></a>
             </li>
@@ -185,11 +185,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    </div>
                     <div class="row">
                         @yield('content')
                     </div>
