@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -76,9 +77,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+        return redirect()->route('users.index')->with('message', 'User Updated Succsesfully!');
     }
 
     /**
@@ -87,8 +92,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        if(auth()->user()->id == $user->id){
+            return redirect()->route('users.index')->with('message', 'Delete Sucssesfully');
+        }
+        $user->delete();
+        return redirect()->route('users.index')->with('message', 'User Delete Succsesfully!');
     }
 }
