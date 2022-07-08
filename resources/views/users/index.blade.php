@@ -16,13 +16,16 @@
             </div>
             <div class="card-header">
                 <form method="GET" action="{{ route('users.index') }}" class="row row-cols-lg-auto g-3 align-items-center">
+                    <div class="col-1">
+                        <a href="{{ route('users.index') }}" class="float-right">Back</a>
+                    </div>
                     <div class="col-5">
                         <div class="input-group">
                             <input type="search" name="search" class="form-control" id="inlineFormInputGroupUsername"
                                 placeholder="Search user">
                         </div>
                     </div>
-                    <div class="col-5">
+                    <div class="col-4">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </div>
                     <div class="col-2">

@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $users = User::all();
         if($request->has('search')){
-            $users = User::where('name', 'like', "%{$request->seacrh}%")->get();
+            $users = User::where('name', 'like', "%{$request->search}%")->orWhere('email', 'like', "%{$request->search}%")->get();
         }
         return view('users.index', compact('users'));
     }
