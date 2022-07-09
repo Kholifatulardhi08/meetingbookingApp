@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\ChangePasswordController;
+
 
 
 
@@ -26,3 +28,4 @@ Route::get('/home', function () {
     return view('home');
 });
 Route::resource('/users', UserController::class);
+Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
