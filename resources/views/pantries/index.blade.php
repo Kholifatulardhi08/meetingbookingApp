@@ -15,7 +15,8 @@
                 @endif
             </div>
             <div class="card-header">
-                <form method="GET" action="{{ route('pantries.index') }}" class="row row-cols-lg-auto g-3 align-items-center">
+                <form method="GET" action="{{ route('pantries.index') }}"
+                    class="row row-cols-lg-auto g-3 align-items-center">
                     <div class="col-2">
                         <a href="{{ route('pantries.index') }}" class="float-right">Refresh</a>
                     </div>

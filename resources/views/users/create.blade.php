@@ -5,14 +5,17 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create User') }}</div>
+                    <div class="card-header">
+                        {{ __('Create User') }}
+                        <a href="{{ route('users.index') }}" class="float-right">Back</a>
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('users.store') }}">
                             @csrf
-
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -59,11 +62,14 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div><div class="row mb-3">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="password-confirm"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
 
@@ -82,4 +88,3 @@
         </div>
     </div>
 @endsection
-

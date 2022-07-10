@@ -32,7 +32,7 @@
                             </div>
                         </form>
                         <div class="form-group mb-3">
-                            <a href="{{ url('delete-rooms/'.$rooms->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ url('delete-rooms/' . $rooms->id) }}" class="btn btn-danger btn-sm">Delete</a>
                         </div>
                     </div>
                 </div>

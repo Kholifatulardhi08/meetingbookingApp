@@ -36,3 +36,4 @@ Route::put('update/rooms/{id}', [RoomController::class, 'update']);
 Route::get('delete-rooms/{id}', [RoomController::class, 'destroy'] );
 Route::resource('pantries', PantryController::class);
 Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
+

@@ -5,14 +5,18 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create Room') }}</div>
+                    <div class="card-header">
+                        {{ __('Create Room') }}
+                        <a href="{{ route('rooms.index') }}" class="float-right">Back</a>
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('rooms.store') }}">
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -57,4 +61,3 @@
         </div>
     </div>
 @endsection
-
