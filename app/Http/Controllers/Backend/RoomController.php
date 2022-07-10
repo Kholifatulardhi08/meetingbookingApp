@@ -64,9 +64,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Room $rooms)
+    public function edit(Room $rooms, $id)
     {
-        //return view('rooms.edit', compact('rooms'));
+        $rooms = Room::find($id);
         return view('rooms.edit', compact('rooms'));
     }
 
@@ -77,11 +77,13 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Room $rooms)
+    public function update(Request $request, Room $rooms, $id)
     {
-        $rooms->update($request->validated());
-
-        return redirect()->route('rooms.index')->with('message', 'Country Updated Successfully');
+        $rooms = Room::find($id);
+        $rooms->name = $request->input('name');
+        $rooms->code = $request->input('code');
+        $rooms->update();
+        return redirect()->route('rooms.index')->with('message','Room Updated Successfully');
     }
 
     /**
@@ -90,9 +92,10 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $rooms)
+    public function destroy(Room $room, $id)
     {
+        $rooms = Room::find($id);
         $rooms->delete();
-        return redirect('/rooms')->with('message', 'Room Deleted Successfully');
+        return redirect()->route('rooms.index')->with('message','Room Deleted Successfully');
     }
 }

@@ -47,8 +47,7 @@
                             <td>{{ $rooms->name }}</td>
                             <td>{{ $rooms->code }}</td>
                             <td>
-                                <a href="{{ route('rooms.index') }}" class="btn btn-primary">Delete</a>
-                                <a href="{{ route('rooms.index') }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ url('rooms/edit/'.$rooms->id) }}" class="btn btn-primary">Edit</a>
                             </td>
                         </tr>
                     @endforeach

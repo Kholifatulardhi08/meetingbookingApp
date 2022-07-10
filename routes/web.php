@@ -30,8 +30,9 @@ Route::get('/home', function () {
     return view('home');
 });
 Route::resource('users', UserController::class);
-Route::resource('rooms', RoomController::class, ['index' => [
-    'create', 'store', 'destroy'
-]]);
+Route::resource('rooms', RoomController::class);
+Route::get('rooms/edit/{id}', [RoomController::class, 'edit']);
+Route::put('update/rooms/{id}', [RoomController::class, 'update']);
+Route::get('delete-rooms/{id}', [RoomController::class, 'destroy'] );
 Route::resource('pantries', PantryController::class);
 Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
