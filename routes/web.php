@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ChangePasswordController;
 use App\Http\Controllers\Backend\RoomController;
+use App\Http\Controllers\Backend\PantryController;
 
 
 
@@ -32,4 +33,5 @@ Route::resource('users', UserController::class);
 Route::resource('rooms', RoomController::class, ['index' => [
     'create', 'store', 'destroy'
 ]]);
+Route::resource('pantries', PantryController::class);
 Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');

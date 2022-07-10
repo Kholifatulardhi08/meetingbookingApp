@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pantry extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['snack', 'food', 'drink'];
 }
