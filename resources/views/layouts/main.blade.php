@@ -90,13 +90,12 @@
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Booking</span>
+                    <span>Manage</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('rooms.index') }}">Room</a>
-                        <a class="collapse-item" href="{{ route('pantries.index') }}">Pantry</a>
-                        <a class="collapse-item" href="cards.html">Instance</a>
+                        <a class="collapse-item" href="{{ route('instances.index') }}">Instance</a>
                     </div>
                 </div>
             </li>

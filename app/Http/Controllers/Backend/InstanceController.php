@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\RoomStoreRequest;
-use App\Models\Room;
+use App\Models\Instance;
+use App\Http\Requests\InstanceStoreRequest;
 
-class RoomController extends Controller
+class InstanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,12 @@ class RoomController extends Controller
      */
     public function index(Request $request)
     {
-        $rooms = Room::all();
+        $instances = Instance::all();
         if ($request->has('search')) {
-            $rooms = Room::where('name', 'like', "%{$request->search}%")->orWhere('code', 'like', "%{$request->search}%")->get();
+            $rooms = Instance::where('name', 'like', "%{$request->search}%")->orWhere('code', 'like', "%{$request->search}%")->get();
         }
 
-        return view('rooms.index', compact('rooms'));
+        return view('instances\index', compact('instances'));
     }
 
     /**
@@ -31,7 +31,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('rooms.create');
+        return view('instances.create');
     }
 
     /**
@@ -40,11 +40,11 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RoomStoreRequest $request, Room $rooms)
+    public function store(InstanceStoreRequest $request, Instance $instances)
     {
-        Room::create($request->validated());
+        Instance::create($request->validated());
 
-        return redirect()->route('rooms.index')->with('message', 'Rooms Created Successfully');
+        return redirect()->route('instances.index')->with('message', 'Instance Created Successfully');
     }
 
     /**
@@ -64,10 +64,10 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Room $rooms, $id)
+    public function edit(Instance $instances, $id)
     {
-        $rooms = Room::find($id);
-        return view('rooms.edit', compact('rooms'));
+        $instances = Instance::find($id);
+        return view('instances.edit', compact('instances'));
     }
 
     /**
@@ -77,14 +77,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $rooms, $id)
+    public function update(Request $request, $id)
     {
-        $rooms = Room::find($id);
-        $rooms->name = $request->name;
-        $rooms->code = $request->code;
-        $rooms->capacity = $request->capacity;
-        $rooms->update();
-        return redirect()->route('rooms.index')->with('message','Room Updated Successfully');
+        //
     }
 
     /**
@@ -93,10 +88,8 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $room, $id)
+    public function destroy($id)
     {
-        $rooms = Room::find($id);
-        $rooms->delete();
-        return redirect()->route('rooms.index')->with('message','Room Deleted Successfully');
+        //
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ChangePasswordController;
 use App\Http\Controllers\Backend\RoomController;
+use App\Http\Controllers\Backend\InstanceController;
 
 
 
@@ -29,8 +30,12 @@ Route::get('/home', function () {
 });
 Route::resource('users', UserController::class);
 Route::resource('rooms', RoomController::class);
+Route::resource('instances', InstanceController::class);
 Route::get('rooms/edit/{id}', [RoomController::class, 'edit']);
 Route::put('update/rooms/{id}', [RoomController::class, 'update']);
 Route::get('delete-rooms/{id}', [RoomController::class, 'destroy'] );
+Route::get('instances/edit/{id}', [InstanceController::class, 'edit']);
+Route::put('instances/rooms/{id}', [InstanceController::class, 'update']);
+Route::get('instances-rooms/{id}', [InstanceController::class, 'destroy'] );
 Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
 
