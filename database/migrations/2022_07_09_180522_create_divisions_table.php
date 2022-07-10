@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNameToInstancesTable extends Migration
+class CreateDivisionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AddNameToInstancesTable extends Migration
      */
     public function up()
     {
-        Schema::table('instances', function (Blueprint $table) {
-            Schema::table('instances', function($table) {
-                $table->text('name');
-            });
+        Schema::create('divisions', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
+            $table->string('code')->unique();
+            $table->timestamps();
         });
     }
 
@@ -27,8 +28,6 @@ class AddNameToInstancesTable extends Migration
      */
     public function down()
     {
-        Schema::table('instances', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('divisions');
     }
 }

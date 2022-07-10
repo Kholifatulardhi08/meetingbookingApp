@@ -15,13 +15,12 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->foreignId('instances_id')->consrained();
-            $table->foreignId('rooms_id')->consrained();
-            $table->foreignId('pantries_id')->consrained();
-            $table->date('start_date')->nullalble();
-            $table->date('end_date')->nullalble();
+            $table->foreignId('user_id');
+            $table->foreignId('room_id');
+            $table->foreignId('pantry_id');
+            $table->foreignId('room_id');
+            $table->timestamp('start_date')->useCurrent();
+            $table->timestamp('end_date')->useCurrent();
             $table->timestamps();
         });
     }

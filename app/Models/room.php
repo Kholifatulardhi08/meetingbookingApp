@@ -5,18 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class room extends Model
+class Room extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'room_code',
-        'name'
-    ];
-    use HasFactory;
+    protected $fillable = ['name', 'code'];
 
-    public function states()
-    {
-        return $this->hasMany(State::class);
-    }
 }

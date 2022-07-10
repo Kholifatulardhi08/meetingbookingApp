@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\room;
 use App\Http\Requests\RoomStoreRequest;
+use App\Models\Room;
 
 class RoomController extends Controller
 {
@@ -16,10 +16,11 @@ class RoomController extends Controller
      */
     public function index(Request $request)
     {
-        $rooms = room::all();
-        if($request->has('search')){
-            $rooms = room::where('name', 'like', "%{$request->search}%")->orWhere('room_code', 'like', "%{$request->search}%")->get();
+        $rooms = Room::all();
+        if ($request->has('search')) {
+            $rooms = Room::where('name', 'like', "%{$request->search}%")->orWhere('code', 'like', "%{$request->search}%")->get();
         }
+
         return view('rooms.index', compact('rooms'));
     }
 
@@ -39,10 +40,11 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RoomStoreRequest $request)
+    public function store(RoomStoreRequest $request, Room $rooms)
     {
-        room::create($request->validated());
-        return redirect()->route('rooms.index')->with('message', 'Room Created Successfully');
+        Room::create($request->validated());
+
+        return redirect()->route('rooms.index')->with('message', 'Country Created Successfully');
     }
 
     /**
@@ -62,9 +64,10 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Room $rooms)
     {
-
+        //return view('rooms.edit', compact('rooms'));
+        return view('rooms.edit', compact('rooms'));
     }
 
     /**
@@ -74,9 +77,11 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Room $rooms)
     {
-        //
+        $rooms->update($request->validated());
+
+        return redirect()->route('rooms.index')->with('message', 'Country Updated Successfully');
     }
 
     /**
@@ -85,8 +90,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Room $rooms)
     {
-        //
+        $rooms->delete();
+        return redirect('/rooms')->with('message', 'Room Deleted Successfully');
     }
 }

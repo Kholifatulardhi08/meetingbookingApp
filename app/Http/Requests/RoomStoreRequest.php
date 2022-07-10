@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class RoomStoreRequest extends FormRequest
 {
     /**
@@ -25,8 +24,8 @@ class RoomStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'room_code' => ['required', 'max:5'],
-            'name'      => ['required']
+            'name' => ['required'],
+            'code' => ['required', 'max:5']
         ];
     }
 }

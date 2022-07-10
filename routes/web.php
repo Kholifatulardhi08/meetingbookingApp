@@ -28,6 +28,8 @@ Auth::routes();
 Route::get('/home', function () {
     return view('home');
 });
-Route::resource('/users', UserController::class);
-Route::resource('/rooms', RoomController::class);
+Route::resource('users', UserController::class);
+Route::resource('rooms', RoomController::class, ['index' => [
+    'create', 'store', 'destroy'
+]]);
 Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');

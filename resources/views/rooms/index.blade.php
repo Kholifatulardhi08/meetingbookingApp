@@ -36,20 +36,18 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Room Code</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Manage</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Management</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($rooms as $rooms)
                         <tr>
-                            <th scope="row">{{ $rooms->id }}</th>
-                            <td>{{ $rooms->room_code }}</td>
                             <td>{{ $rooms->name }}</td>
+                            <td>{{ $rooms->code }}</td>
                             <td>
-                                <a href="{{ route('rooms.edit', $rooms->id) }}" class="btn btn-primary">EDIT</a>
+                                <a href="{{ route('rooms.index') }}" class="btn btn-primary">Delete</a>
                             </td>
                         </tr>
                     @endforeach

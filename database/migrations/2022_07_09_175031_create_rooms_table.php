@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePantriesTable extends Migration
+class CreateRoomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreatePantriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pantries', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_id')->constrained();
-            $table->string('minuman');
-            $table->string('makanan');
-            $table->string('snack');
+            $table->string('name')->unique();
+            $table->string('code')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreatePantriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pantries');
+        Schema::dropIfExists('rooms');
     }
 }
