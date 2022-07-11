@@ -77,9 +77,13 @@ class InstanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Instance $instances, $id)
     {
-        //
+        $instances = Instance::find($id);
+        $instances->name = $request->name;
+        $instances->code = $request->code;
+        $instances->update();
+        return redirect()->route('instances.index')->with('message','Instances Updated Successfully');
     }
 
     /**
@@ -88,8 +92,10 @@ class InstanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Instance $instances, $id)
     {
-        //
+        $instances = Instance::find($id);
+        $instances->delete();
+        return redirect()->route('instances.index')->with('message','Instance Deleted Successfully');
     }
 }

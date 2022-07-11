@@ -31,7 +31,7 @@
                             </div>
                         </form>
                         <div class="form-group mb-3">
-                            <a href="{{ url('delete-rooms/' . $instances->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ url('delete-instances/' . $instances->id) }}" class="btn btn-danger btn-sm">Delete</a>
                         </div>
                     </div>
                 </div>
