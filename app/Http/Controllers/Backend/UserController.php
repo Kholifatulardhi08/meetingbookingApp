@@ -8,6 +8,9 @@ use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
+
+
 
 class UserController extends Controller
 {
@@ -16,7 +19,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function index(Request $request)
+     public function index(Request $request)
     {
         $users = User::all();
         if($request->has('search')){

@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+//namespace App\Http\Middleware;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoomStoreRequest;
 use App\Models\Room;
+use App\Http\Middleware\Level;
+use Auth;
 
 class RoomController extends Controller
 {
@@ -14,7 +17,7 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+     public function index(Request $request)
     {
         $rooms = Room::all();
         if ($request->has('search')) {

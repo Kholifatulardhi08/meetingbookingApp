@@ -61,6 +61,23 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="level" class="col-md-4 col-form-label text-md-end">{{ __('Level') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="level" id="level" class="form-control">
+                                    <option value="" selected>--Choice Level--</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="guest">Guest</option>
+                                </select>
+
+                                @error('level')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

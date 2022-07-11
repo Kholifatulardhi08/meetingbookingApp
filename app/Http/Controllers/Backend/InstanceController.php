@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Instance;
 use App\Http\Requests\InstanceStoreRequest;
+use App\Http\Middleware\Level;
+use Auth;
+
 
 class InstanceController extends Controller
 {
