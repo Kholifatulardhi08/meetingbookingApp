@@ -83,9 +83,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $users, $id)
     {
-
+        $users = User::find($id);
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->update();
+        return redirect()->route('users.index')->with('message','Users Updated Successfully');
     }
 
     /**
