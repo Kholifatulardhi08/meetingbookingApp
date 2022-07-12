@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ChangePasswordController;
 use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Backend\InstanceController;
+use App\Http\Controllers\RoleController;
 
 
 
@@ -33,15 +34,18 @@ Route::get('/home', function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', function () {
         return view('home');
+
     });
-    Route::resource('users', UserController::class);
-    Route::resource('rooms', RoomController::class);
-    Route::resource('instances', InstanceController::class);
-    Route::get('rooms/edit/{id}', [RoomController::class, 'edit']);
-    Route::put('update/rooms/{id}', [RoomController::class, 'update']);
-    Route::get('delete-rooms/{id}', [RoomController::class, 'destroy'] );
-    Route::get('instances/edit/{id}', [InstanceController::class, 'edit']);
-    Route::put('update/instances/{id}', [InstanceController::class, 'update']);
-    Route::get('delete-instances/{id}', [InstanceController::class, 'destroy'] );
-    Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
+    Route::middleware(['auth'])->group(function () {
+        Route::resource('users', UserController::class);
+        Route::resource('rooms', RoomController::class);
+        Route::resource('instances', InstanceController::class);
+        Route::get('rooms/edit/{id}', [RoomController::class, 'edit']);
+        Route::put('update/rooms/{id}', [RoomController::class, 'update']);
+        Route::get('delete-rooms/{id}', [RoomController::class, 'destroy'] );
+        Route::get('instances/edit/{id}', [InstanceController::class, 'edit']);
+        Route::put('update/instances/{id}', [InstanceController::class, 'update']);
+        Route::get('delete-instances/{id}', [InstanceController::class, 'destroy'] );
+        Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
+    });
 });

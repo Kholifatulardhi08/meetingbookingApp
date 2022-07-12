@@ -8,7 +8,8 @@ use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Auth;
+use Spatie\Permission\Models\Role;
+use DB;
 
 
 
@@ -19,13 +20,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+      $this->middleware('permission:user-list', ['only' => ['index','show']]);
+      $this->middleware('permission:user-create', ['only' => ['create','store']]);
+      $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
+
      public function index(Request $request)
     {
-        $users = User::all();
+        $users = User::all()->paginate(3);;
         if($request->has('search')){
             $users = User::where('name', 'like', "%{$request->search}%")->orWhere('email', 'like', "%{$request->search}%")->get();
         }
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users'))->with('users.index', ($request->input('page', 1) - 1) * 5);;
     }
 
     /**

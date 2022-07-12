@@ -17,6 +17,14 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+      $this->middleware('permission:user-list', ['only' => ['index','show']]);
+      $this->middleware('permission:user-create', ['only' => ['create','store']]);
+      $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
+
      public function index(Request $request)
     {
         $rooms = Room::all();
@@ -80,6 +88,13 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+      $this->middleware('permission:user-list', ['only' => ['index','show']]);
+      $this->middleware('permission:user-create', ['only' => ['create','store']]);
+      $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
     public function update(Request $request, Room $rooms, $id)
     {
         $rooms = Room::find($id);
