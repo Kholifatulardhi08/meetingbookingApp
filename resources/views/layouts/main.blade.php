@@ -71,6 +71,47 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <!-- Nav Item - Dashboard -->
+            @can('users.index', User::class)
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('users.index') }}">
+                    <i class="fas fa-duotone fa-user-alt"></i>
+                    <span>Manage User</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            @endcan
+            @can('rooms.index', Room::class)
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Feature
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Manage</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('rooms.index') }}">Room</a>
+                        <a class="collapse-item" href="{{ route('instances.index') }}">Instance</a>
+                    </div>
+                </div>
+            </li>
+            @endcan
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Manage
+            </div>
+
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"

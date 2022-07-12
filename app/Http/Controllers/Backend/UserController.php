@@ -30,11 +30,11 @@ class UserController extends Controller
 
      public function index(Request $request)
     {
-        $users = User::all()->paginate(3);;
+        $users = User::all();
         if($request->has('search')){
             $users = User::where('name', 'like', "%{$request->search}%")->orWhere('email', 'like', "%{$request->search}%")->get();
         }
-        return view('users.index', compact('users'))->with('users.index', ($request->input('page', 1) - 1) * 5);;
+        return view('users.index', compact('users'));
     }
 
     /**
