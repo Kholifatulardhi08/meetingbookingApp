@@ -21,7 +21,7 @@ class InstanceController extends Controller
     {
         $instances = Instance::all();
         if ($request->has('search')) {
-            $rooms = Instance::where('name', 'like', "%{$request->search}%")->orWhere('code', 'like', "%{$request->search}%")->get();
+            $instances = Instance::where('name', 'like', "%{$request->search}%")->orWhere('code', 'like', "%{$request->search}%")->get();
         }
 
         return view('instances\index', compact('instances'));

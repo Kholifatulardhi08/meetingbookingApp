@@ -11,15 +11,16 @@
                 @if (session()->has('message'))
                     <div class="alert alert-success">
                         {{ session('message') }}
+                        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 @endif
             </div>
             <div class="card-header">
-                <form method="GET" action="{{ route('instances.index') }}" class="row row-cols-lg-auto g-3 align-items-center">
-                    <div class="col-2">
-                        <a href="{{ route('instances.index') }}" class="float-right">Refresh</a>
-                    </div>
-                    <div class="col-4">
+                <form method="GET" action="{{ route('instances.index') }}"
+                    class="row row-cols-lg-auto g-3 align-items-center">
+                    <div class="col-5">
                         <div class="input-group">
                             <input type="search" name="search" class="form-control" id="inlineFormInputGroupUsername"
                                 placeholder="Search instances">
