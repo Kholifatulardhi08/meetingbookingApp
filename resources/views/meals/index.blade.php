@@ -46,7 +46,8 @@
                         <tr>
                             <td>{{ $meals->name }}</td>
                             <td>{{ $meals->qty }}</td>
-                                <a href="{{ url('meals/edit/' . $meals->id) }}" class="btn btn-primary">Edit</a>
+                            <td>
+                            <a href="{{ url('meals/edit/' . $meals->id) }}" class="btn btn-primary">Edit</a>
                             </td>
                         </tr>
                     @endforeach
