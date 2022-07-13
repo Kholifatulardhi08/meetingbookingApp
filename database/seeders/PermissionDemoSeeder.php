@@ -11,6 +11,8 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ChangePasswordController;
 use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Backend\InstanceController;
+use App\Http\Controllers\Backend\MealController;
+use App\Http\Controllers\Backend\DrinkController;
 
 class PermissionDemoSeeder extends Seeder
 {
@@ -35,6 +37,14 @@ class PermissionDemoSeeder extends Seeder
         Permission::create(['name' => 'bookings.edit']);
         Permission::create(['name' => 'bookings.delete']);
         Permission::create(['name' => 'bookings.update']);
+        Permission::create(['name' => 'meals.update']);
+        Permission::create(['name' => 'meals.create']);
+        Permission::create(['name' => 'meals.edit']);
+        Permission::create(['name' => 'meals.delete']);
+        Permission::create(['name' => 'drinks.update']);
+        Permission::create(['name' => 'drinks.create']);
+        Permission::create(['name' => 'drinks.delete']);
+        Permission::create(['name' => 'drinks.edit']);
 
 
         //create roles and assign existing permissions

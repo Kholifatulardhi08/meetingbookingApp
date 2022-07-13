@@ -1,22 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Spatie\Permission\Models\Role;
+use App\Models\Meals;
+use App\Http\Requests\MealStoreRequest;
 
-class RoleController extends Controller
+class MealController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = auth()->user();
-        $users->assignRole('admin');
+        $meals = Meals::all();
+        if ($request->has('search')) {
+            $meals = Meals::where('name', 'like', "%{$request->search}%")->get();
+        }
+
+        return view('meals.index', compact('meals'));
     }
 
     /**
@@ -26,7 +31,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('meals.create');
     }
 
     /**
@@ -35,9 +40,11 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MealStoreRequest $request)
     {
-        //
+        Meals::create($request->validated());
+
+        return redirect()->route('meals.index')->with('message', 'meals Created Successfully');
     }
 
     /**

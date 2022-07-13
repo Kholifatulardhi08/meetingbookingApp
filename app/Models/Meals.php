@@ -14,9 +14,4 @@ class Meals extends Model
         'name',
         'qty'
     ];
-
-    public function booking()
-    {
-        return $this->hasOne('App\Models\Booking', 'meals_id');
-    }
 }

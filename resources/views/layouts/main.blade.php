@@ -73,39 +73,39 @@
 
             <!-- Nav Item - Dashboard -->
             @can('users.index', User::class)
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('users.index') }}">
-                    <i class="fas fa-duotone fa-user-alt"></i>
-                    <span>Manage User</span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <i class="fas fa-duotone fa-user-alt"></i>
+                        <span>Manage User</span></a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
             @endcan
             @can('rooms.index', Room::class)
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Feature
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Manage</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('rooms.index') }}">Room</a>
-                        <a class="collapse-item" href="{{ route('instances.index') }}">Instance</a>
-                    </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Feature
                 </div>
-            </li>
-            @endcan
 
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Manage</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('rooms.index') }}">Room</a>
+                            <a class="collapse-item" href="{{ route('instances.index') }}">Instance</a>
+                            <a class="collapse-item" href="{{ route('meals.index') }}">Meal</a>
+                            <a class="collapse-item" href="{{ route('drinks.index') }}">Drink</a>
+                        </div>
+                    </div>
+                </li>
+            @endcan
             <!-- Divider -->
             <hr class="sidebar-divider">
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Manage
@@ -158,28 +158,28 @@
                                 </li>
                             @endif
                         @else
-                                <!-- Nav Item - User Information -->
-                                <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span
-                                            class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                                    </a>
-                                    <!-- Dropdown - User Information -->
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                        aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span
+                                        class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
+                                        {{ __('Logout') }}
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
 
