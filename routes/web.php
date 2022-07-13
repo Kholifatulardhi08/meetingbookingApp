@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ChangePasswordController;
 use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Backend\InstanceController;
+use App\Http\Controllers\Backend\BookingController;
 use App\Http\Controllers\RoleController;
 
 
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::resource('users', UserController::class);
         Route::resource('rooms', RoomController::class);
         Route::resource('instances', InstanceController::class);
+        Route::resource('bookings', BookingController::class);
         Route::get('rooms/edit/{id}', [RoomController::class, 'edit']);
         Route::put('update/rooms/{id}', [RoomController::class, 'update']);
         Route::get('delete-rooms/{id}', [RoomController::class, 'destroy'] );

@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Booking;
 
-
-class Instance extends Model
+class Meals extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'code'];
+    protected $fillable = [
+        'name',
+        'qty'
+    ];
 
     public function booking()
     {
-        return $this->hasOne('App\Models\Booking', 'instance_id');
+        return $this->hasOne('App\Models\Booking', 'meals_id');
     }
 }

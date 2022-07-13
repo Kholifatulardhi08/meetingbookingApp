@@ -122,7 +122,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">booking Screen:</h6>
-                        <a class="collapse-item" href="login.html">Manage booking data</a>
+                        <a class="collapse-item" href="{{ route('bookings.index') }}">Manage booking data</a>
                     </div>
                 </div>
             </li>

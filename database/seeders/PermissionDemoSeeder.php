@@ -24,8 +24,6 @@ class PermissionDemoSeeder extends Seeder
         // reset cahced roles and permission
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // create permissions
-        Permission::create(['name' => 'rooms.create']);
         Permission::create(['name' => 'rooms.edit']);
         Permission::create(['name' => 'rooms.delete']);
         Permission::create(['name' => 'rooms.update']);
@@ -53,14 +51,16 @@ class PermissionDemoSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Ardhi',
             'email' => 'ardhi.kholifatul8@gmail.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'nohp' => '081225755325'
         ]);
         $user->assignRole($guestRole);
 
         $user = User::factory()->create([
             'name' => 'Admin',
             'email' => 'superadmin@gmail.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'nohp' => '081225755325'
         ]);
         $user->assignRole($superadminRole);
     }
