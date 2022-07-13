@@ -61,16 +61,14 @@ class PermissionDemoSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Ardhi',
             'email' => 'ardhi.kholifatul8@gmail.com',
-            'password' => bcrypt('12345678'),
-            'nohp' => '081225755325'
+            'password' => bcrypt('12345678')
         ]);
         $user->assignRole($guestRole);
 
         $user = User::factory()->create([
             'name' => 'Admin',
             'email' => 'superadmin@gmail.com',
-            'password' => bcrypt('12345678'),
-            'nohp' => '081225755325'
+            'password' => bcrypt('12345678')
         ]);
         $user->assignRole($superadminRole);
     }
