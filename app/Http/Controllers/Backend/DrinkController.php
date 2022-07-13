@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Drink;
+use App\Http\Requests\DrinkStoreRequest;
+
 
 class DrinkController extends Controller
 {
@@ -12,9 +15,14 @@ class DrinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $drinks = Drink::all();
+        if ($request->has('search')) {
+            $drinks = Drink::where('name', 'like', "%{$request->search}%")->get();
+        }
+
+        return view('drinks.index', compact('drinks'));
     }
 
     /**
@@ -24,7 +32,7 @@ class DrinkController extends Controller
      */
     public function create()
     {
-        //
+        return view('drinks.create');
     }
 
     /**
@@ -33,9 +41,11 @@ class DrinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DrinkStoreRequest $request)
     {
-        //
+        Drink::create($request->validated());
+
+        return redirect()->route('drinks.index')->with('message', 'Drinks Created Successfully');
     }
 
     /**
@@ -55,9 +65,10 @@ class DrinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Drink $drinks, $id)
     {
-        //
+        $drinks = Drink::find($id);
+        return view('drinks.edit', compact('drinks'));
     }
 
     /**
@@ -67,9 +78,13 @@ class DrinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Drink $drinks, Request $request, $id )
     {
-        //
+        $drinks = Drink::find($id);
+        $drinks->name = $request->name;
+        $drinks->qty = $request->qty;
+        $drinks->update();
+        return redirect()->route('drinks.index')->with('message','Drink Updated Successfully');
     }
 
     /**
@@ -78,8 +93,10 @@ class DrinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Drink $drinks, $id)
     {
-        //
+        $drinks = Drink::find($id);
+        $drinks->delete();
+        return redirect()->route('drinks.index')->with('message','Drink Deleted Successfully');
     }
 }

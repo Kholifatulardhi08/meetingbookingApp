@@ -92,7 +92,7 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Meals $meals, $id)
+    public function destroy(Meals $meals, $id)
     {
         $meals = Meals::find($id);
         $meals->delete();

@@ -54,6 +54,9 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('delete-instances/{id}', [InstanceController::class, 'destroy'] );
         Route::get('meals/edit/{id}', [MealController::class, 'edit']);
         Route::put('update/meals/{id}', [MealController::class, 'update']);
+        Route::get('drinks/edit/{id}', [DrinkController::class, 'edit']);
+        Route::put('update/drinks/{id}', [DrinkController::class, 'update']);
+        Route::get('delete-drinks/{id}', [DrinkController::class, 'destroy'] );
         Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
     });
 });
