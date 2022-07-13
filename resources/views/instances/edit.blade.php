@@ -2,39 +2,67 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                @if (session('status'))
-                    <h6 class="alert alert-success">{{ session('status') }}</h6>
-                @endif
+        <div class="row justify-content-center">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Edit & Update Instance
-                            <a href="{{ route('instances.index') }}" class="btn btn-danger float-end">BACK</a>
-                        </h4>
+                        {{ __('Update Instance') }}
+                        <a href="{{ route('instances.index') }}" class="float-right">Back</a>
                     </div>
                     <div class="card-body">
-
-                        <form action="{{ url('update/instances/' . $instances->id) }}" method="POST">
+                        <form method="POST" action="{{ route('instances.update', $instances->id) }}">
                             @csrf
                             @method('PUT')
-                            <div class="form-group mb-3">
-                                <label for="">Name</label>
-                                <input type="text" name="name" value="{{ $instances->name }}" class="form-control">
+                            <div class="row mb-3">
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name', $instances->name) }}" required autocomplete="name"
+                                        autofocus>
+
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="form-group mb-3">
-                                <label for="">Code</label>
-                                <input type="text" name="code" value="{{ $instances->code }}" class="form-control">
+
+                            <div class="row mb-3">
+                                <label for="code"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Code') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="code" type="code"
+                                        class="form-control @error('code') is-invalid @enderror" name="code"
+                                        value="{{ old('code', $instances->code) }}" required autocomplete="code">
+
+                                    @error('qty')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                            <div class="row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('UPDATE') }}
+                                    </button>
+                                    <form method="POST" action="{{ route('instances.destroy', $instances->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">DELETE {{ $instances->code }} </button>
+                                    </form>
+                                </div>
                             </div>
                         </form>
-                        <div class="form-group mb-3">
-                            <a href="{{ url('delete-instances/' . $instances->id) }}" class="btn btn-danger btn-sm">Delete</a>
-                        </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

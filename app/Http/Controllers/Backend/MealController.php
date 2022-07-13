@@ -64,9 +64,10 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Meals $meals, $id)
     {
-        //
+        $meals = Meals::find($id);
+        return view('meals.edit', compact('meals'));
     }
 
     /**
@@ -78,7 +79,11 @@ class MealController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $meals = Meals::find($id);
+        $meals->name = $request->name;
+        $meals->qty = $request->qty;
+        $meals->update();
+        return redirect()->route('meals.index')->with('message','Meals Updated Successfully');
     }
 
     /**
@@ -87,8 +92,10 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Meals $meals, $id)
     {
-        //
+        $meals = Meals::find($id);
+        $meals->delete();
+        return redirect()->route('meals.index')->with('message','Meals Deleted Successfully');
     }
 }
