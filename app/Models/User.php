@@ -27,7 +27,7 @@ class User extends Authenticatable
 
     public function booking()
     {
-        return $this->hasOne('App\Models\Booking', 'user_id');
+        return $this->hasMany(Booking::class, 'foreign_key');
     }
 
     /**

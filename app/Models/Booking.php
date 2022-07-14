@@ -14,21 +14,7 @@ class Booking extends Model
 
     protected $fillable = [
         'name', 'snack',
-        'user_id', 'room_is',
-        'instance_id', 'food_id', 'drink_id',
         'start_date', 'end_date', 'start_time',
         'end_time'
     ];
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
-    public function room()
-    {
-        return $this->belongsTo('App\Models\Room');
-    }
-    public function instance()
-    {
-        return $this->belongsTo('App\Models\Instance');
-    }
 }
