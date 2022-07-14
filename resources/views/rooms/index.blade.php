@@ -28,9 +28,11 @@
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </div>
+                    @can('rooms.create', Room::class)
                     <div class="col-2">
                         <a href="{{ route('rooms.create') }}" class="btn btn-primary mb-2">Create</a>
                     </div>
+                    @endcan
                 </form>
             </div>
             <table class="table table-striped">
@@ -39,7 +41,9 @@
                         <th scope="col">Name</th>
                         <th scope="col">Code</th>
                         <th scope="col">Capacity</th>
+                        @can('rooms.create', Room::class)
                         <th scope="col">Management</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -48,9 +52,11 @@
                             <td>{{ $rooms->name }}</td>
                             <td>{{ $rooms->code }}</td>
                             <td>{{ $rooms->capacity }}</td>
+                            @can('rooms.edit', Room::class)
                             <td>
                                 <a href="{{ url('rooms/edit/' . $rooms->id) }}" class="btn btn-primary">Edit</a>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

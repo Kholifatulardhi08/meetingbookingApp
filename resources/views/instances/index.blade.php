@@ -29,9 +29,11 @@
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </div>
+                    @can('insances.create', Instance::class)
                     <div class="col-2">
                         <a href="{{ route('instances.create') }}" class="btn btn-primary mb-2">Create</a>
                     </div>
+                    @endcan
                 </form>
             </div>
             <table class="table table-striped">
@@ -39,7 +41,9 @@
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Code</th>
+                        @can('insances.create', Instance::class)
                         <th scope="col">Management</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -47,9 +51,11 @@
                         <tr>
                             <td>{{ $instances->name }}</td>
                             <td>{{ $instances->code }}</td>
+                            @can('insances.create', Instance::class)
                             <td>
                                 <a href="{{ url('instances/edit/' . $instances->id) }}" class="btn btn-primary">Edit</a>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

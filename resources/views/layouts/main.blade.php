@@ -80,12 +80,12 @@
                 </li>
                 <!-- Divider -->
                 <hr class="sidebar-divider">
-            @endcan
-            @can('rooms.index', Room::class)
+
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Feature
                 </div>
+                @endcan
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </li>
-            @endcan
+
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
