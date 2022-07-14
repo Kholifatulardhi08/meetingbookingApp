@@ -13,4 +13,11 @@ class Room extends Model
 
     protected $fillable = ['name', 'code', 'capacity'];
 
+    public function room()
+    {
+        //return $this->hasOne();
+        return $this->hasOne(Booking::class, 'name');
+
+    }
+
 }

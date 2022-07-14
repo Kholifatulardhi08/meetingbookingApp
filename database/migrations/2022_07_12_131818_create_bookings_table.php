@@ -17,6 +17,9 @@ class CreateBookingsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('snack');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('room_id')->constrained();
+            $table->foreignId('instance_id')->constrained();
             $table->dateTime('start_date')->default(DB::raw('CURRENT_TIMESTAMP')); //gantiDateTime
             $table->dateTime('end_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('start_time')->useCurrent();

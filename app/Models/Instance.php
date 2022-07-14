@@ -13,4 +13,11 @@ class Instance extends Model
 
     protected $fillable = ['name', 'code'];
 
+    public function instance()
+    {
+        //return $this->hasOne();
+        return $this->hasOne(Booking::class, 'name');
+
+    }
+
 }

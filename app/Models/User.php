@@ -25,11 +25,6 @@ class User extends Authenticatable
         'password'
     ];
 
-    public function booking()
-    {
-        return $this->hasMany(Booking::class, 'foreign_key');
-    }
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -48,4 +43,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user()
+    {
+        //return $this->hasOne();
+        return $this->hasOne(Booking::class, 'name');
+
+    }
 }
