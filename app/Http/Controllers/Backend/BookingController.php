@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Booking;
-use App\Models\user;
+use App\Models\User;
 use App\Models\Room;
 use App\Models\Instance;
 
@@ -19,10 +19,9 @@ class BookingController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request, Booking $bookings)
+    public function index(Request $request, Booking $bookings, User $users)
     {
         $bookings = Booking::all();
-        //dd($bookings);
         if($request->has('search')){
             $bookings = Booking::where('name', 'like', "%{$request->search}%")->orWhere('email', 'like', "%{$request->search}%")->get();
         }
@@ -34,7 +33,7 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $users, Room $rooms, Instance $instance, Booking $bookings )
+    public function create(Booking $bookings )
     {
         $users = User::all();
         $rooms = Room::all();
