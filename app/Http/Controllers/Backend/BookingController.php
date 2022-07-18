@@ -33,11 +33,12 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Booking $bookings )
+    public function create(Booking $bookings, User $users, Instance $instances, Room $rooms)
     {
+        $bookings = Booking::all();
         $users = User::all();
+        $instances = Instance::all();
         $rooms = Room::all();
-        $instance = Instance::all();
         return view('bookings.create', compact('bookings'));
     }
 

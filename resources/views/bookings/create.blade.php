@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Create Drink') }}
+                        {{ __('Create Booking') }}
                         <a href="{{ route('bookings.index') }}" class="float-right">Back</a>
                     </div>
 
@@ -55,12 +55,12 @@
                                 <div class="col-md-6">
                                     <select name="user-id" class="form-control @error('user_id') is-invalid @enderror">
                                         <option value="">- Pilih -</option>
-                                        @foreach ($bookings as $item)
-                                            <option value="{{ $item }}">{{ $item }}</option>
+                                        @foreach ($bookings as $booking)
+                                            <option value="{{ $booking->id }}">{{ $booking->user->name }}</option>
                                         @endforeach
                                     </select>
 
-                                    @error('snack')
+                                    @error('creat by')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -74,6 +74,9 @@
                                 <div class="col-md-6">
                                     <select name="room" class="form-control @error('room') is-invalid @enderror">
                                         <option value="">- Pilih -</option>
+                                        @foreach ($bookings as $booking)
+                                            <option value="{{ $booking->id }}">{{ $booking->room->name }}</option>
+                                        @endforeach
                                     </select>
 
                                     @error('room')
@@ -91,10 +94,75 @@
                                 <div class="col-md-6">
                                     <select name="instance" class="form-control @error('instance') is-invalid @enderror">
                                         <option value="">- Pilih -</option>
-                                        //@foreach ($bookings as $booking)
-                                            //<option value="{{ $booking }}" {{ $bookings->id ? 'selected' : '' }}>{{ $bookings }}</option>
-                                        //@endforeach
+                                        @foreach ($bookings as $booking)
+                                            <option value="{{ $booking->id }}">{{ $booking->instance->name }}</option>
+                                        @endforeach
                                     </select>
+
+                                    @error('snack')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="instance"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Start Date') }}</label>
+
+                                <div class="col-md-6">
+                                    <input name="start_date" type="datetime-local">
+
+                                    </input>
+
+                                    @error('snack')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="end_date"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('End Date') }}</label>
+
+                                <div class="col-md-6">
+                                    <input name="end_date" type="datetime-local"></input>
+
+                                    @error('snack')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="instance"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Start Time') }}</label>
+
+                                <div class="col-md-6">
+                                    <input name="start_date" type="datetime-local">
+
+                                    </input>
+
+                                    @error('snack')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="instance"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('End Time') }}</label>
+
+                                <div class="col-md-6">
+                                    <input name="start_date" type="datetime-local">
+
+                                    </input>
 
                                     @error('snack')
                                         <span class="invalid-feedback" role="alert">

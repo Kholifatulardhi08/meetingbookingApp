@@ -16,7 +16,7 @@ class Instance extends Model
     public function instance()
     {
         //return $this->hasOne();
-        return $this->hasOne(Booking::class, 'name');
+        return $this->hasMany(Booking::class, 'name');
 
     }
 
