@@ -32,7 +32,7 @@
             font-size: 18px;
             border: none;
             outline: none;
-            background-color: rgb(17, 0, 255);
+            background-color: rgb(255, 0, 0);
             color: white;
             cursor: pointer;
             padding: 15px;
@@ -51,7 +51,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="nav navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="nav navbar-nav bg-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
