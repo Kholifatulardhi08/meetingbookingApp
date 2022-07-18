@@ -18,7 +18,7 @@
                 @endif
             </div>
             <div class="card-header">
-                <form method="GET" action="{{ route('instances.index') }}"
+                <form method="GET" action="{{ route('bookings.index') }}"
                     class="row row-cols-lg-auto g-3 align-items-center">
                     <div class="col-5">
                         <div class="input-group">

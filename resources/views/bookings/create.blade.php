@@ -53,37 +53,20 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Creat By') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="user-id" class="form-control @error('user_id') is-invalid @enderror">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($bookings as $booking)
-                                            <option value="{{ $booking }}">{{ $booking->user->id }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    @error('creat by')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="user_id" type="user_id"
+                                        class="form-control @error('user_id') is-invalid @enderror" name="user_id"
+                                        value="{{ old('user_id') }}" required autocomplete="code">
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <label for="room"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Room') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="room" class="form-control @error('room') is-invalid @enderror">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($bookings as $booking)
-                                            <option value="{{ $booking }}">{{ $booking->room->name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    @error('room')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="room_id" type="room_id"
+                                        class="form-control @error('room_id') is-invalid @enderror" name="room_id"
+                                        value="{{ old('room_id') }}" required autocomplete="code">
                                 </div>
                             </div>
 
@@ -92,31 +75,21 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Instance') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="instance" class="form-control @error('instance') is-invalid @enderror">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($bookings as $booking)
-                                            <option value="{{ $booking }}">{{ $booking->instance->name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    @error('snack')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="instance_id" type="instance_id"
+                                        class="form-control @error('instance_id') is-invalid @enderror" name="instance_id"
+                                        value="{{ old('instance_id') }}" required autocomplete="code">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="instance"
+                                <label for="start_date"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Start Date') }}</label>
 
                                 <div class="col-md-6">
                                     <input name="start_date" type="datetime-local">
-
                                     </input>
 
-                                    @error('snack')
+                                    @error('start_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -130,8 +103,7 @@
 
                                 <div class="col-md-6">
                                     <input name="end_date" type="datetime-local"></input>
-
-                                    @error('snack')
+                                    @error('end_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

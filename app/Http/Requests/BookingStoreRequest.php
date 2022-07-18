@@ -26,11 +26,11 @@ class BookingStoreRequest extends FormRequest
         return [
             'name' => ['required'],
             'snack' => ['required'],
-            'user_id'=>['required'],
-            'room_id'=>['required'],
-            'instance_id'=>['required'],
-            'start_date'=>['required'],
-            'end_date'=>['required']
+            'user_id'=> ['required'],
+            'room_id'=> ['required'],
+            'instance_id'=> ['required'],
+            'start_date'=> ['required'],
+            'end_date'=> ['required']
         ];
     }
 }

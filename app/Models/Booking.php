@@ -13,21 +13,25 @@ class Booking extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'snack', 'user_id', 'room_id', 'instance_id',
-        'start_date', 'end_date', 'start_time',
-        'end_time'
+        'name',
+        'snack',
+        'user_id',
+        'room_id',
+        'instance_id',
+        'start_date',
+        'end_date'
     ];
 
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
     public function Room()
     {
-        return $this->belongsToMany(Room::class);
+        return $this->belongsTo(Room::class);
     }
     public function instance()
     {
-        return $this->belongsToMany(Instance::class);
+        return $this->belongsTo(Instance::class);
     }
 }

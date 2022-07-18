@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\BookingStoreRequest;
 use App\Models\Booking;
 use App\Models\User;
 use App\Models\Room;
@@ -35,10 +36,7 @@ class BookingController extends Controller
      */
     public function create(Booking $bookings, User $users, Instance $instances, Room $rooms)
     {
-        $bookings = Booking::all();
-        $users = User::all();
-        $instances = Instance::all();
-        $rooms = Room::all();
+        $bookings = Booking::all(['user_id','room_id', 'instance_id']);
         return view('bookings.create', compact('bookings'));
     }
 
@@ -48,9 +46,18 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookingStoreRequest $request)
     {
-
+        Booking::create([
+            'name' => $request->name,
+            'snack' => $request->snack,
+            'user_id' => $request->user_id,
+            'room_id' => $request->room_id,
+            'instance_id' => $request->instance_id,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+        ]);
+        return redirect()->route('bookings.index')->with('message', 'booking created Succsesfully!');
     }
 
     /**
