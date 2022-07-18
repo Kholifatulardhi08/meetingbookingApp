@@ -77,9 +77,10 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Booking $bookings, $id)
     {
-        //
+        $bookings = Booking::find($id);
+        return view('bookings.edit', compact('bookings'));
     }
 
     /**
@@ -89,9 +90,18 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Booking $bookings, Request $request, $id)
     {
-        //
+        $bookings = Booking::find($id);
+        $bookings->name = $request->name;
+        $bookings->snack = $request->snack;
+        $bookings->user_id = $request->user_id;
+        $bookings->room_id = $request->room_id;
+        $bookings->instance_id = $request->instance_id;
+        $bookings->start_date = $request->start_date;
+        $bookings->end_date = $request->end_date;
+        $bookings->update();
+        return redirect()->route('bookings.index')->with('message','Booking Updated Successfully');
     }
 
     /**
@@ -100,8 +110,10 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Booking $bookings ,$id)
     {
-        //
+        $bookings = Booking::find($id);
+        $bookings->delete();
+        return redirect()->route('bookings.index')->with('message','Booking Deleted Successfully');
     }
 }

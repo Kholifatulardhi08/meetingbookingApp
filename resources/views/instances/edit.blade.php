@@ -49,13 +49,13 @@
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('UPDATE') }}
+                                    <button type="submit" class="btn btn-danger">
+                                        {{ __('Update') }}
                                     </button>
                                     <form method="POST" action="{{ route('instances.destroy', $instances->id) }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger">DELETE {{ $instances->code }} </button>
+                                        <button class="btn btn-danger">Delete</button>
                                     </form>
                                 </div>
                             </div>

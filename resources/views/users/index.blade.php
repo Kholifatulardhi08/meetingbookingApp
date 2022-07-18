@@ -26,10 +26,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-danger">Search</button>
                     </div>
                     <div class="col-2">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Create</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-danger">Create</a>
                     </div>
                 </form>
             </div>
@@ -49,7 +49,7 @@
                             <td>{{ $users->name }}</td>
                             <td>{{ $users->email }}</td>
                             <td>
-                                <a href="{{ route('users.edit', $users->id) }}" class="btn btn-primary">EDIT</a>
+                                <a href="{{ route('users.edit', $users->id) }}" class="btn btn-danger">Edit</a>
                             </td>
                         </tr>
                     @endforeach

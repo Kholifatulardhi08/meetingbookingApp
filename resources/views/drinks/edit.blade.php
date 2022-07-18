@@ -29,8 +29,8 @@
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
-                                    <a href="{{ url('delete-drinks/' . $drinks->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                                    <button type="submit" class="btn btn-danger">{{ __('Update') }}</button>
+                                    <a href="{{ url('delete-drinks/' . $drinks->id) }}" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </form>

@@ -27,10 +27,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-danger">Search</button>
                     </div>
                     <div class="col-2">
-                        <a href="{{ route('drinks.create') }}" class="btn btn-primary mb-2">Create</a>
+                        <a href="{{ route('drinks.create') }}" class="btn btn-danger">Create</a>
                     </div>
                 </form>
             </div>
@@ -48,7 +48,7 @@
                             <td>{{ $drinks->name }}</td>
                             <td>{{ $drinks->qty }}</td>
                             <td>
-                                <a href="{{ url('drinks/edit/' . $drinks->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ url('drinks/edit/' . $drinks->id) }}" class="btn btn-danger">Edit</a>
                             </td>
                         </tr>
                     @endforeach

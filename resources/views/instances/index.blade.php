@@ -27,11 +27,11 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-danger">Search</button>
                     </div>
                     @can('insances.create', Instance::class)
                     <div class="col-2">
-                        <a href="{{ route('instances.create') }}" class="btn btn-primary mb-2">Create</a>
+                        <a href="{{ route('instances.create') }}" class="btn btn-danger">Create</a>
                     </div>
                     @endcan
                 </form>
@@ -53,7 +53,7 @@
                             <td>{{ $instances->code }}</td>
                             @can('insances.create', Instance::class)
                             <td>
-                                <a href="{{ url('instances/edit/' . $instances->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ url('instances/edit/' . $instances->id) }}" class="btn btn-danger">Edit</a>
                             </td>
                             @endcan
                         </tr>

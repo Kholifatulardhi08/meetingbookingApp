@@ -57,6 +57,9 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('drinks/edit/{id}', [DrinkController::class, 'edit']);
         Route::put('update/drinks/{id}', [DrinkController::class, 'update']);
         Route::get('delete-drinks/{id}', [DrinkController::class, 'destroy'] );
+        Route::get('bookings/edit/{id}', [BookingController::class, 'edit']);
+        Route::put('update/bookings/{id}', [BookingController::class, 'update']);
+        Route::get('delete-bookings/{id}', [BookingController::class, 'destroy'] );
         Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
     });
 });
