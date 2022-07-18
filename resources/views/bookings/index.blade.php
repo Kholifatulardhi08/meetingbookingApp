@@ -44,8 +44,6 @@
                         <th scope="col">Instance</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">End Date</th>
-                        <th scope="col">Start Time</th>
-                        <th scope="col">End Time</th>
                         <th scope="col">Management</th>
                     </tr>
                 </thead>
@@ -59,8 +57,6 @@
                             <td>{{ $bookings->instance->name }}</td>
                             <td>{{ $bookings->start_date }}</td>
                             <td>{{ $bookings->end_date }}</td>
-                            <td>{{ $bookings->start_time }}</td>
-                            <td>{{ $bookings->end_time }}</td>
                             <td>
                                 <a href="{{ url('bookings/edit/' . $bookings->id) }}" class="btn btn-primary">Edit</a>
                             </td>

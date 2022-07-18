@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Backend\InstanceController;
 use App\Http\Controllers\Backend\MealController;
 use App\Http\Controllers\Backend\DrinkController;
+use Auth;
 
 class PermissionDemoSeeder extends Seeder
 {

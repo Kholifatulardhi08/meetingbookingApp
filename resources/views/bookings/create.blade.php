@@ -56,7 +56,7 @@
                                     <select name="user-id" class="form-control @error('user_id') is-invalid @enderror">
                                         <option value="">- Pilih -</option>
                                         @foreach ($bookings as $booking)
-                                            <option value="{{ $booking->id }}">{{ $booking->user->name }}</option>
+                                            <option value="{{ $booking }}">{{ $booking->user->id }}</option>
                                         @endforeach
                                     </select>
 
@@ -75,7 +75,7 @@
                                     <select name="room" class="form-control @error('room') is-invalid @enderror">
                                         <option value="">- Pilih -</option>
                                         @foreach ($bookings as $booking)
-                                            <option value="{{ $booking->id }}">{{ $booking->room->name }}</option>
+                                            <option value="{{ $booking }}">{{ $booking->room->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -95,7 +95,7 @@
                                     <select name="instance" class="form-control @error('instance') is-invalid @enderror">
                                         <option value="">- Pilih -</option>
                                         @foreach ($bookings as $booking)
-                                            <option value="{{ $booking->id }}">{{ $booking->instance->name }}</option>
+                                            <option value="{{ $booking }}">{{ $booking->instance->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -130,39 +130,6 @@
 
                                 <div class="col-md-6">
                                     <input name="end_date" type="datetime-local"></input>
-
-                                    @error('snack')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="instance"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Start Time') }}</label>
-
-                                <div class="col-md-6">
-                                    <input name="start_date" type="datetime-local">
-
-                                    </input>
-
-                                    @error('snack')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="instance"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('End Time') }}</label>
-
-                                <div class="col-md-6">
-                                    <input name="start_date" type="datetime-local">
-
-                                    </input>
 
                                     @error('snack')
                                         <span class="invalid-feedback" role="alert">

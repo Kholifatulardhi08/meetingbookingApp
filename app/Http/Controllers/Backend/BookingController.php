@@ -23,7 +23,7 @@ class BookingController extends Controller
     {
         $bookings = Booking::all();
         if($request->has('search')){
-            $bookings = Booking::where('name', 'like', "%{$request->search}%")->orWhere('email', 'like', "%{$request->search}%")->get();
+            $bookings = Booking::where('name', 'like', "%{$request->search}%")->orWhere('user_id', 'like', "%{$request->search}%")->get();
         }
         return view('bookings.index', compact('bookings'));
     }
@@ -50,7 +50,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
