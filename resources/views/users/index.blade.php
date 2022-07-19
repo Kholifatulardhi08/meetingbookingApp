@@ -36,18 +36,20 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Nomor</th>
+                        <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Phone Number</th>
                         <th scope="col">Manage</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $users)
                         <tr>
-                            <th scope="row">{{ $users->id }}</th>
+                            <th scope="row"></th>
                             <td>{{ $users->name }}</td>
                             <td>{{ $users->email }}</td>
+                            <td>{{ $users->phone_number }}</td>
                             <td>
                                 <a href="{{ route('users.edit', $users->id) }}" class="btn btn-danger">Edit</a>
                             </td>
