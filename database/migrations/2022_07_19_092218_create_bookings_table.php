@@ -15,13 +15,17 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('agenda', 100);
             $table->string('snack');
+            $table->date('date');
+            $table->integer('person');
+            $table->timestamp('start_time');
+            $table->timestamp('end_time');
+
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('room_id')->references('id')->on('rooms');
-            $table->foreignId('instance_id')->references('id')->on('instances');
-            $table->dateTime('start_date')->default(DB::raw('CURRENT_TIMESTAMP')); //gantiDateTime
-            $table->dateTime('end_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->foreignId('unit_id')->references('id')->on('units');
+
             $table->timestamps();
         });
     }

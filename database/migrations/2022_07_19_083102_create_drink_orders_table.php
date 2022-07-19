@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstancesTable extends Migration
+class CreateDrinkOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateInstancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('instances', function (Blueprint $table) {
+        Schema::create('drink_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code')->unique();
+            $table->string('name', 30);
+            $table->integer('total');
+
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateInstancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instances');
+        Schema::dropIfExists('drink_orders');
     }
 }
