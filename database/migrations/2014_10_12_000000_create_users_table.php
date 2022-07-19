@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('phone_number', 15);
             $table->boolean('status_verified')->default(0);
             $table->string('role', 25);
-
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -34,6 +35,5 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        //$table->dropColumn('user_id');
     }
 }

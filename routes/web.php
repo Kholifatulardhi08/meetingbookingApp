@@ -65,3 +65,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('users/user/change-password', [ChangePasswordController::class, 'change_password'])->name('user.change.password');
     });
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -58,7 +58,10 @@ class UserController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'phone_number'=> $request->phone_number,
+            'status_verified' => $request->status_verified,
+            'role' => $request->role,
         ]);
         return redirect()->route('users.index')->with('message', 'User created Succsesfully!');
     }
