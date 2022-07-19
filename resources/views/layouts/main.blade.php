@@ -123,6 +123,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">booking Screen:</h6>
                         <a class="collapse-item" href="{{ route('bookings.index') }}">Manage booking data</a>
+                        <a class="collapse-item" href="{{ route('pantries.index') }}">Manage booking guest</a>
                     </div>
                 </div>
             </li>

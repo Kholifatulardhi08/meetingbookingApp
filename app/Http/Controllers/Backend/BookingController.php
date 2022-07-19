@@ -20,11 +20,11 @@ class BookingController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request, Booking $bookings, User $users)
+    public function index(Request $request, Booking $bookings)
     {
         $bookings = Booking::all();
         if($request->has('search')){
-            $bookings = Booking::where('name', 'like', "%{$request->search}%")->orWhere('user_id', 'like', "%{$request->search}%")->get();
+            $bookings = Booking::where('name', 'like', "%{$request->search}%")->orWhere('snack', 'like', "%{$request->search}%")->get();
         }
         return view('bookings.index', compact('bookings'));
     }

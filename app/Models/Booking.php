@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Room;
 use App\Models\Instance;
+use App\Models\Pantry;
 
 class Booking extends Model
 {
@@ -33,5 +34,10 @@ class Booking extends Model
     public function instance()
     {
         return $this->belongsTo(Instance::class);
+    }
+
+    public function pantry()
+    {
+        return $this->HasMany(Pantry::class);
     }
 }

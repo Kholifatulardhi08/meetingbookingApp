@@ -53,9 +53,13 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Creat By') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="user_id" type="user_id"
-                                        class="form-control @error('user_id') is-invalid @enderror" name="user_id"
-                                        value="{{ old('user_id') }}" required autocomplete="code">
+                                    <select class="form-control" name="user_id">
+                                        <option>-Choice-</option>
+                                        @foreach ($bookings as $booking)
+                                            <option value="{{ $booking->id }}">{{ $booking->user->name }}</option>
+                                        @endforeach
+                                    </select>
+
                                 </div>
                             </div>
 
@@ -64,9 +68,12 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Room') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="room_id" type="room_id"
-                                        class="form-control @error('room_id') is-invalid @enderror" name="room_id"
-                                        value="{{ old('room_id') }}" required autocomplete="code">
+                                    <select name="room_id" class="form-control">
+                                        <option>-Choice-</option>
+                                        @foreach ($bookings as $booking)
+                                            <option value="{{ $booking->id }}">{{ $booking->Room->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -75,9 +82,12 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Instance') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="instance_id" type="instance_id"
-                                        class="form-control @error('instance_id') is-invalid @enderror" name="instance_id"
-                                        value="{{ old('instance_id') }}" required autocomplete="code">
+                                    <select name="room_id" class="form-control">
+                                        <option>-Choice-</option>
+                                        @foreach ($bookings as $booking)
+                                            <option value="{{ $booking->id }}">{{ $booking->instance->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 

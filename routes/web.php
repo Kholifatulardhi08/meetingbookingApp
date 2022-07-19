@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\InstanceController;
 use App\Http\Controllers\Backend\BookingController;
 use App\Http\Controllers\Backend\MealController;
 use App\Http\Controllers\Backend\DrinkController;
+use App\Http\Controllers\Backend\PantryController;
 use App\Http\Controllers\RoleController;
 
 
@@ -46,6 +47,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::resource('bookings', BookingController::class);
         Route::resource('meals', MealController::class);
         Route::resource('drinks', DrinkController::class);
+        Route::resource('pantries', PantryController::class);
         Route::get('rooms/edit/{id}', [RoomController::class, 'edit']);
         Route::put('update/rooms/{id}', [RoomController::class, 'update']);
         Route::get('delete-rooms/{id}', [RoomController::class, 'destroy'] );
